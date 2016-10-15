@@ -1,0 +1,57 @@
+[
+  {"id":"32k4j32khkh","business":"AJ3R2rJ","industry":{"id": "0", "name": "Food"},"common_name":{"name":"Milk","id":"werawerw"},"category":{"id":"5322kjkl2","name":"Meats"},"sub_category":{"id":"arawekj3","name":"Beef"},"code":"FD1430",
+    "name":"Atlantic Farms Smoked Salmon","active":true,"brand":"Shirakiku","origin":{"id":"34j32lkj3l3k2jk","name":"India"},"organic":true,"storage":{"id": "1", "name": "Fresh"},"shelf_life":{"id": "1", "name": "One to Six months"},
+    "ingredient":"soy paste, soy sauce, pink powder, black powder, sesame oil, peruvian cocoa powder, pinoy extract, potato seasoning",
+    "allergy_alert":"may contain nuts","description":"A delicious blend of potato and beans","draft":true,
+    "tax_code": {"abbreviation":"GST","name":"Goods and Sales Tax"},
+    "images":
+    [ {"id":"4jsj21","src":"http://f.tqn.com/y/foodbeverage/1/L/S/6/-/-/Beanitos-Chipotle-BBQ-Non-GMO-small.jpg"},
+      {"id":"41k2l4","src":"https://mojosimon.files.wordpress.com/2011/12/large-company.jpg?w=600"},
+      {"id":"34k14!","src":"http://www.healthline.com/hlcmsresource/images/diabetesmine/wp-content/uploads/2012/10/DiabetesMine-Small-But-Mighty-icon.jpg"},
+      {"id":"f23423","src":"http://f.tqn.com/y/foodbeverage/1/L/S/6/-/-/Beanitos-Chipotle-BBQ-Non-GMO-small.jpg"},
+      {"id":"fwaer2","src":"https://mojosimon.files.wordpress.com/2011/12/large-company.jpg?w=600"},
+      {"id":"fewfawer1","src":"http://www.healthline.com/hlcmsresource/images/diabetesmine/wp-content/uploads/2012/10/DiabetesMine-Small-But-Mighty-icon.jpg"},
+      {"id":"fawerawer12","src":"http://f.tqn.com/y/foodbeverage/1/L/S/6/-/-/Beanitos-Chipotle-BBQ-Non-GMO-small.jpg"},
+      {"id":"faawerawr","src":"https://mojosimon.files.wordpress.com/2011/12/large-company.jpg?w=600"},
+      {"id":"rwaerawr1","src":"http://www.healthline.com/hlcmsresource/images/diabetesmine/wp-content/uploads/2012/10/DiabetesMine-Small-But-Mighty-icon.jpg"},
+      {"id":"fawefa3212","src":"http://f.tqn.com/y/foodbeverage/1/L/S/6/-/-/Beanitos-Chipotle-BBQ-Non-GMO-small.jpg"},
+      {"id":"arwer13r1","src":"https://mojosimon.files.wordpress.com/2011/12/large-company.jpg?w=600"},
+      {"id":"afrawer1","src":"http://www.healthline.com/hlcmsresource/images/diabetesmine/wp-content/uploads/2012/10/DiabetesMine-Small-But-Mighty-icon.jpg"}
+    ],
+    "variations":
+    [
+      {
+        "id":"32l4kj32lkj1","property":"Default","varieties":
+        [
+          {"id":"23o4ij2ojo","value":"Default Product","active":true,"packing":"12ea","selling_unit":"Box","currency":"CAD","regular_price":45,"tax_incursion_price":false,"open_price":true,"tax_exempt":true,"tax_code":{"id":"1"}}
+        ]
+      },
+      {
+        "id":"32l4kj32lkj1","property":"color","varieties":
+            [
+              {"id":"234l3k2jlj2fw","value":"blue","active":true,"packing":"12ea","selling_unit":"Bag","currency":"USD","regular_price":45,"tax_incursion_price":false,"open_price":true,"tax_exempt":true,"tax_code":{"id":"2"}},
+              {"id":"3243kl2kl32j","value":"red","active":true,"packing":"6ea","selling_unit":"Case","currency":"PESO","regular_price":50,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"2"}},
+              {"id":"23432r23j23","value":"purple","active":true,"packing":"3ea","selling_unit":"Ton","currency":"EUR","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"1"}}
+            ]
+      },
+      {
+        "id":"32l4kj32lkj1","property":"size","varieties":
+            [
+              {"id":"324j23l4kj23lk","value":"SM","active":true,"packing":"17ea","selling_unit": "Quarter","currency":"CAD","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"2"}},
+              {"id":"3243k2lrkl2j","value":"LG","active":true,"packing":"12ea","selling_unit":"Milliliter","currency":"PESO","regular_price":55,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"1"}},
+              {"id":"432lk4j3kl2j","value":"M","active":true,"packing":"16ea","selling_unit":"Quarter","currency":"CAD","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"1"}}
+            ]
+      },
+      {
+          "id":"32324324234","property":"spec","varieties":
+        [
+          {"id":"324l3j2klj","value":"Great","active":true,"packing":"17ea","selling_unit":"Ounce","currency":"EUR","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"2"}},
+          {"id":"324j32klj","value":"Better","active":true,"packing":"12ea","selling_unit": "Gallon","currency":"EUR","regular_price":55,"tax_incursion_price":true,"open_price":true,"tax_exempt":true,"tax_code":{"id":"1"}},
+          {"id":"23l4kj32","value":"Average","active":true,"packing":"16ea","selling_unit":"Gram","currency":"RM","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true,"tax_code":{"id":"1"}},
+          {"id":"3l24jkkl23j","value":"Best","active":true,"packing":"16ea","selling_unit":"Barrel","currency":"CAD","regular_price":45,"tax_incursion_price":true,"open_price":true,"tax_exempt":true, "tax_code":{"id":"2"}}
+        ]
+      }
+    ]
+  }
+]
+

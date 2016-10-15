@@ -1,0 +1,107 @@
+<div class="container-fluid">
+    <div class="row" style="padding-top: 15px;">
+        <form class="col-xs-34 col-xs-offset-1 form" autocomplete="off">
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Item code</label>
+                        <input type="text" class="form-control" placeholder="e.g. FN34235" ng-model="product.code">
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.code"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.code}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Industry</label>
+                        <select class="form-control" style="display:block;" ng-model="product.industry"  ng-options="industry as industry.display for industry in options.industries track by industry.value">
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.industry"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.industry}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Product Name</label>
+                        <!-- product.name = $viewValue  ensures we set the ng-model not to the selected item but the text in the input. -->
+                        <!-- we cannot bind ng-model-options to linking function -->
+                        <input type="text" class="form-control common-name" placeholder="India Fine Rice" ng-model="product.name" uib-typeahead="commonName as commonName.name for commonName in getCommonNames($viewValue) "
+                                                                                                                typeahead-on-select="setModels($item,$model,$label,$event,product); "  typeahead-min-length="3" typeahead-popup-template-url="popupTemplate.html" ng-model-options="{debounce:200}">
+                        <!-- https://github.com/angular-ui/bootstrap/issues/3789-->
+                        <!-- typeahead works with promises but you cannot filter the array in the markup , you must do it in the javascript. avoid doing the below.-->
+                        <!--<input type="text" class="form-control" placeholder="India Fine Rice" ng-model="product.name" uib-typeahead="commonName as commonName.name for commonName in getCommonNames($viewValue) | filter:{name:$viewValue}" typeahead-on-select=""  typeahead-min-length="3" typeahead-popup-template-url="popupTemplate.html">-->
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.name"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Food Common Name</label>
+                        <input type="text" class="form-control common-name" ng-model="product.common_name.name" disabled>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.common_name"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.common_name}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Category</label>
+                        <select class="form-control" style="display:block;" ng-model="product.category" ng-options="category as category.display for category in options.categories track by category.value" ng-disabled="options.categories.length == 1">
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.category"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.category}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1" ng-show="(options.sub_categories || []).length">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Sub-category</label>
+                        <select class="form-control" style="display:block;" ng-model="product.sub_category" ng-options="sub_category as sub_category.display for sub_category in options.sub_categories track by sub_category.value" ng-disabled="options.sub_categories.length == 1">
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-30 validation-error">
+                            <p ng-if="validation.sub_category"> <span class="glyphicon glyphicon-remove-circle"></span> {{validation.sub_category}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<script type="text/ng-template" id="popupTemplate.html">
+    <div class="custom-popup-wrapper" ng-style="{top: position().top+'px', left: position().left+'px'}"
+                    style="display: block;"ng-show="isOpen() && !moveInProgress" aria-hidden="{{!isOpen()}}">
+            <p class="message">Select the product's common name</p>
+
+            <ul class="dropdown-menu" role="listbox">
+                <!--<li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+        ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                    <div uib-typeahead-match index="$index" match="match" query="query" ></div>
+                </li>-->
+                <!-- we dont want to select a dropdown item as our ng-model value. so its selectMatch is deleted. -->
+                <li ng-repeat="match in matches track by $index" ng-class="{active: isActive($index) }"
+                    ng-mouseenter="selectActive($index)" ng-click="selectMatch($index)" role="option" id="{{::match.id}}">
+                    <div uib-typeahead-match index="$index" match="match" query="query" ></div>
+                </li>
+            </ul>
+    </div>
+</script>

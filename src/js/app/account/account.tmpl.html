@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xs-34 col-xs-offset-2">
+            <div class="row">
+                <div class="col-xs-6">
+                    <div class="list-group profile-menu box-shadow">
+                        <button type="button" class="list-group-item" ng-repeat="page in accountCtrl.pages" ng-class="{'profile-active': accountCtrl.pages.selected._id == page._id || accountCtrl.$state.current.name == page.state}" ng-click="accountCtrl.highlightAndState(page,$event)">{{page.display}}</button>
+                   <!--     <button type="button" class="list-group-item profile-active">Business Profile</button>
+                        <button type="button" class="list-group-item">Account Profile</button>
+                        <button type="button" class="list-group-item">Business Details</button>
+                        <button type="button" class="list-group-item">Tax List</button>
+                        <button type="button" class="list-group-item">Business Certificates</button>
+                        <button type="button" class="list-group-item">Images</button>
+                        <button type="button" class="list-group-item">Manage Employees</button>-->
+                    </div>
+                </div>
+                <div class="col-xs-25 profile-content-area">
+                    <div ui-view="profile"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

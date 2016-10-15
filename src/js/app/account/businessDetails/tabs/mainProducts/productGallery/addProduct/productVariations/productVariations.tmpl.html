@@ -1,0 +1,63 @@
+<div class="row">
+    <div class="col-xs-5 col-xs-offset-1" style="margin-top: 10px;">
+        <button class="btn btn-default" ng-click="productVariationsCtrl.createVariation()">
+            Create Variation
+        </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-xs-16 col-xs-offset-1" ng-repeat="variation in productVariationsCtrl.variations">
+        <table class="table table-bordered table-striped table-custom" style="margin-top: 16px;">
+            <tr>
+                <th>
+                    <div class="row" edit-in-place ctrl="productVariationsCtrl" variation-index="variationMain" variety-index="{{$index}}">
+                        <div class="col-xs-15 click-to-input" ><p ng-show="productVariationsCtrl.paperFields.variationMain[$index]">{{variation.property}}</p><input ng-hide="productVariationsCtrl.paperFields.variationMain[$index]" style="height:25px;" class="form-control" type="text" ng-model="variation.property"/></div>
+                        <div class="col-xs-8 col-xs-offset-1"  ng-hide="variation.property == 'Default' || $index == 0">
+                            <button class="btn btn-default" ng-click="productVariationsCtrl.deleteVariation($index)">Delete</button>
+                        </div>
+                        <div class="col-xs-10 col-xs-offset-1"  ng-hide="variation.property == 'Default' || $index == 0">
+                            <button class="btn btn-default" ng-click="productVariationsCtrl.addVariety($index)">Add Variety</button>
+                        </div>
+                    </div>
+                </th>
+            </tr>
+            <tr ng-repeat="variety in variation.varieties track by $index" edit-in-place ctrl="productVariationsCtrl" variation-index="{{$parent.$index}}" variety-index="{{$index}}">
+                <td>
+                    <div class="row">
+                        <div class="col-xs-13 click-to-input">
+                            <p ng-show="productVariationsCtrl.paperFields[$parent.$index][$index]">{{variety.value}}</p><input ng-hide="productVariationsCtrl.paperFields[$parent.$index][$index]" style="height:25px;" class="form-control" type="text" ng-model="variety.value"/>
+                        </div>
+                        <div class="col-xs-4 col-xs-offset-1">
+                            <button class="btn btn-default"   ng-hide="variation.property == 'Default' || $index == 0" style="padding-left: 6px; padding-right: 6px;" ng-click="productVariationsCtrl.makeDefault($index, $parent.$index)"><span class="glyphicon glyphicon-star"></span></button>
+                        </div>
+                        <div class="col-xs-12 col-xs-offset-1">
+
+                            <!-- TODO do something here that would make selection index-based, not ID based -->
+                            <!--<button class="btn btn-default" ng-click="productVariationsCtrl.goToSalesDetail({variationID:variation.id, varietyID:variety.id})">Selling Details</button>-->
+                            <button class="btn btn-default" ng-click="productVariationsCtrl.goToSalesDetail({product:product,variationIndex: $parent.$index, varietyIndex:$index})">Selling Details</button>
+                        </div>
+                        <div class="col-xs-4 col-xs-offset-1" ng-hide="variation.property == 'Default' || $index == 0">
+                            <button class="btn btn-default" style="padding-left: 6px; padding-right: 6px;" ng-click="productVariationsCtrl.deleteVariety($index, $parent.$index)"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                    </div>
+                </td>
+           <!--     <td>
+                    <div class="row">
+                        <div class="col-xs-18">
+                            <p>{{variety.value}}</p>
+                        </div>
+                        <div class="col-xs-12 col-xs-offset-1">
+                            <button class="btn btn-default">Selling Details</button>
+                        </div>
+                        <div class="col-xs-4 col-xs-offset-1">
+                            <button class="btn btn-default" style="padding-left: 6px; padding-right: 6px;"><span class="glyphicon glyphicon-remove"></span></button>
+                        </div>
+                    </div>
+
+                </td>-->
+            </tr>
+        </table>
+    </div>
+
+</div>
+

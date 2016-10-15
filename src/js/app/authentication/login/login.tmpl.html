@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <div class="row form-wrapper">
+        <div class="col-xs-8 col-xs-offset-14">
+            <form class="form standalone-form form-horizontal" ng-submit="loginCtrl.login()">
+                <fieldset>
+                    <h3>Welcome Back.</h3>
+                    <div class="form-group">
+                        <label>E-mail</label>
+                        <input type="email" class="form-control" ng-model="loginCtrl.user" minlength="5" required/>
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" ng-model="loginCtrl.password" required/>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-36">
+                            <input type="submit" value="Log in" class="action-button form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group join-free-link">
+                        <div class="row">
+                            <a href="#" ui-sref="membership.register.pickRegistrationType">Join free now</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-36 error-message" ng-show="loginCtrl.displayError">
+                            <p class="text-center error-message-text"><span class="glyphicon glyphicon-remove-circle" ng-click="loginCtrl.removeError()"></span> {{loginCtrl.errorMessage}}</p>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</div>

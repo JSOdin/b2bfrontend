@@ -1,0 +1,30 @@
+<form class="form standalone-form registration-form form-horizontal" revert-step ng-submit="registrationCtrl.validateAndNext($event)">
+    <fieldset>
+        <h2 class="registration-title text-center">Enter your Email</h2>
+        <div class="form-group registration-email-form-group">
+            <label class="col-xs-8 control-label" >Email</label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <input type="email" class="form-control" placeholder="Email" ng-model="registrationCtrl.email"/>
+            </div>
+        </div>
+        <div class="form-group" ng-show="registrationCtrl.displayError">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p><span class="glyphicon glyphicon-remove-circle"></span> {{registrationCtrl.errorMessage}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-8 control-label">Are You Human?</label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <h2 class="slide-element" registration-slider verification="registrationCtrl.verification">
+                    <span class="slider-parts slider-color-section"></span><span class="slider-parts slider-btn"><span class="slider-btn-angles">&raquo;</span></span><span class="slider-parts slider-info text-center">Please click and slide to verify.</span>
+                </h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-23">
+                <input type="submit" value="Next" class="action-button form-control" ng-disabled="!registrationCtrl.verification.verified" ng-class="{'highlighter':registrationCtrl.verification.verified,'disabled':!registrationCtrl.verification.verified}"/>
+            </div>
+        </div>
+    </fieldset>
+</form>

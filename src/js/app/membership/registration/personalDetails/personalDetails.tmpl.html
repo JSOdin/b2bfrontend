@@ -1,0 +1,74 @@
+<form class="form standalone-form registration-form form-horizontal" activate-step name="businessDetailForm">
+    <fieldset>
+        <h2 class="registration-title text-center">Personal User</h2>
+
+        <!-- password -->
+        <div class="form-group">
+            <label class="col-xs-8 control-label" >Password</label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <input type="password" class="form-control" placeholder="Please enter your password" ng-model="registrationCtrl.password" ng-change="registrationCtrl.refreshFieldWarning('password')"/>
+            </div>
+        </div>
+        <div class="form-group validation-error" ng-show="registrationCtrl.validation.password">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p> <span class="glyphicon glyphicon-remove-circle"></span> {{registrationCtrl.validationMessages.password}}</p>
+            </div>
+        </div>
+        <!-- confirm password -->
+        <div class="form-group">
+            <label class="col-xs-8 control-label" >Confirm Password</label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <input type="password" class="form-control" placeholder="Please retype your password" ng-model="registrationCtrl.confirmPassword" ng-change="registrationCtrl.checkConfirmPassword(registrationCtrl.password,registrationCtrl.confirmPassword)"/>
+            </div>
+        </div>
+        <div class="form-group validation-error" ng-show="registrationCtrl.validation.confirmPassword">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p> <span class="glyphicon glyphicon-remove-circle"></span> {{registrationCtrl.validationMessages.confirmPassword}}</p>
+            </div>
+        </div>
+        <!-- country -->
+        <div class="form-group">
+            <label class="col-xs-8 control-label" >Country</label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <select class="form-control" ng-model="registrationCtrl.country" ng-options="country as country.display for country in registrationCtrl.countries" ng-change="registrationCtrl.refreshFieldWarning('country')">
+
+                </select>
+            </div>
+        </div>
+        <div class="form-group validation-error" ng-show="registrationCtrl.validation.country">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p> <span class="glyphicon glyphicon-remove-circle"></span> {{registrationCtrl.validationMessages.country}}</p>
+            </div>
+        </div>
+        <!-- full name -->
+        <div class="form-group">
+            <label class="col-xs-8 control-label" >Full Name</label>
+            <div class="col-xs-13 col-xs-offset-1">
+                <input type="text" class="form-control" placeholder="First name" ng-model="registrationCtrl.first_name" ng-change="registrationCtrl.refreshFieldWarning('first_name')"/>
+            </div>
+            <div class="col-xs-12 col-xs-offset-1">
+                <input type="text" class="form-control" placeholder="Last name" ng-model="registrationCtrl.last_name" ng-change="registrationCtrl.refreshFieldWarning('last_name')"/>
+            </div>
+        </div>
+        <div class="form-group validation-error" ng-show="registrationCtrl.validation.first_name || registrationCtrl.validation.last_name">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p> <span class="glyphicon glyphicon-remove-circle"></span> {{registrationCtrl.validationMessages.name}}</p>
+            </div>
+        </div>
+        <div class="form-group validation-error" ng-show="businessDetailForm.$error.minlength">
+            <label class="col-xs-8 control-label" ></label>
+            <div class="col-xs-26 col-xs-offset-1">
+                <p> <span class="glyphicon glyphicon-remove-circle"></span> {{'Phone number is too short.'}}</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-xs-offset-23">
+                <input type="button" value="Next" class="action-button form-control highlighter" ng-click="registrationCtrl.submitData()"/>
+            </div>
+        </div>
+    </fieldset>
+</form>

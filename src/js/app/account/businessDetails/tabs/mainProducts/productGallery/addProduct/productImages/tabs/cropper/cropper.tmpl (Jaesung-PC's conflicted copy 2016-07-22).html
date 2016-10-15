@@ -1,0 +1,21 @@
+<div class="row" style="padding: 12px;">
+    <div class="col-xs-35">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" ng-click="resizeCanvas()" ng-disabled="!cropImage">Crop</button>
+            <button type="button" class="btn btn-default" ng-click="reset()" ng-disabled="!cropImage">Reset</button>
+        </div>
+    </div>
+</div>
+<div class="row" style="padding-bottom: 12px;">
+    <div class="col-xs-36" id="cropper" style="display:block;" ng-show="cropImage">
+        <img   ng-src="{{cropImage}}" style="max-width: 100%;"/>
+    </div>
+
+</div>
+<div class="row" style="padding: 12px;">
+    <div class="col-xs-36" ng-if="!cropImage">
+        <div class="col-xs-15">
+            <p style="color: #bbb;"><span class="glyphicon glyphicon-exclamation-sign"></span> No images were selected.</p>
+        </div>
+    </div>
+</div>

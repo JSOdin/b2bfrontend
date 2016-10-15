@@ -1,0 +1,9 @@
+{
+  "name":"Vin Diesel Motors",
+  "tax_codes":[
+    {"abbreviation":"GST","name":"Goods and Sales Tax"},
+    {"abbreviation":"PST","name":"Provincial Sales Tax"},
+    {"abbreviation":"QST","name":"Quebec Sales Tax"},
+    {"abbreviation":"HST","name":"Harmonized Sales Tax"}
+  ]
+}

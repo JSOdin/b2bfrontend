@@ -1,0 +1,75 @@
+<div class="container-fluid">
+    <div class="row" style="padding-top: 15px;">
+        <form class="col-xs-34 col-xs-offset-1 form" autocomplete="off">
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label>Property Value</label>
+                        <input type="text" class="form-control" placeholder="e.g. Blue" ng-model="variety.value">
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label>Packing</label>
+                        <input type="text" class="form-control" placeholder="e.g. 12pack/box" ng-model="variety.packing">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Selling Unit</label>
+                        <select class="form-control" style="display:block;" ng-model="variety.selling_unit" ng-options="selling_unit as selling_unit.display for selling_unit in options.selling_units track by selling_unit.value"></select>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Currency</label>
+                        <select class="form-control" style="display:block;" ng-model="variety.currency" ng-options="country as country.currency for country in options.countries track by country.currency"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Regular Price</label>
+                        <input class="form-control" style="display:block;" placeholder="e.g. $45.50" ng-model="variety.regular_price" numbers-only="{{variety.regular_price}}"/>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Tax Code</label>
+                        <select class="form-control" style="display:block;" ng-model="variety.tax_code" ng-options="tax_code as tax_code.tax_code for tax_code in tax_codes track by tax_code.id"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="variety.tax_incursion_price"/> Tax Included in Price
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="variety.open_price"/> Reveal Price
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="variety.tax_exempt"/> Tax Exempt
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

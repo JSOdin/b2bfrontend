@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="src/css/lib/bootstrap.css"/>
+    <link rel="stylesheet" href="src/css/lib/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="src/css/app/style.css"/>
+    <link rel="stylesheet" href="src/css/lib/cropper.css"/>
+</head>
+<body ng-app="app">
+    <div ui-view="navbar"></div>
+    <div ui-view="main" body-color></div>
+    <!-- CSRF -- http://stackoverflow.com/questions/18156452/django-csrf-token-angularjs> -->
+    <script>
+        window.csrf_token = "{{ csrf_token }}";
+    </script>
+
+    <!-- libs -->
+    <script src="src/js/lib/jquery.js"></script>
+    <script src="src/js/lib/bootstrap.js"></script>
+
+    <!-- https://github.com/fengyuanchen/cropperjs-->
+    <script src="src/js/lib/cropper.js"></script>
+    <script src="src/js/lib/angular.js"></script>
+   <!-- <script src="src/js/lib/ngCropper.js"></script>-->
+    <!-- sortable items library https://github.com/RubaXa/Sortable -->
+    <!--<script src="src/js/lib/Sortable.js"></script>
+    <script src="src/js/lib/ng-sortable.js"></script>-->
+    <script src="src/js/lib/ui.router.js"></script>
+    <script src="src/js/lib/angular.animate.js"></script>
+    <script src="src/js/lib/ui-bootstrap-custom-1.3.3.js"></script>
+    <script src="src/js/lib/ui-bootstrap-custom-tpls-1.3.3.js"></script>
+
+
+    <!--<script src="src/js/lib/deprecatedSortable.js"></script>-->
+
+    <!-- inquiry module -->
+    <script src="src/js/app/inquiry/inquiry.js"></script>
+    <script src="src/js/app/inquiry/compare/compare.js"></script>
+    <script src="src/js/app/inquiry/compare/gallery/gallery.js"></script>
+    <script src="src/js/app/inquiry/compare/productFeatures/productFeatures.js"></script>
+    <script src="src/js/app/inquiry/compare/supplierDetails/supplierDetails.js"></script>
+
+    <!-- auth module -->
+    <script src="src/js/app/authentication/login/formValidation/formValidation.js"></script>
+    <script src="src/js/app/authentication/login/tokenFactory/tokenFactory.js"></script>
+    <script src="src/js/app/authentication/login/authInterceptor/authInterceptor.js"></script>
+    <script src="src/js/app/authentication/login/login.js"></script>
+    <script src="src/js/app/authentication/login/authService/authService.js"></script>
+    <script src="src/js/app/authentication/authentication.js"></script>
+
+    <!-- membership module -->
+    <script src="src/js/app/membership/registration/registration.js"></script>
+    <script src="src/js/app/membership/registration/verifyEmail/revertStep.js"></script>
+    <script src="src/js/app/membership/registration/verifyEmail/registrationSlider.js"></script>
+    <script src="src/js/app/membership/registration/businessDetails/activateStep.js"></script>
+    <script src="src/js/app/membership/membership.js"></script>
+
+    <!-- common module -->
+    <script src="src/js/app/common/selectOptions/selectOptions.js"></script>
+    <script src="src/js/app/common/components/slideBar/slideBar.js"></script>
+    <script src="src/js/app/common/validators/numbersOnly.js"></script>
+    <script src="src/js/app/common/components/modal/modal.js"></script>
+    <script src="src/js/app/common/components/components.js"></script>
+    <script src="src/js/app/common/tools/editInPlace/editInPlace.js"></script>
+    <script src="src/js/app/common/tools/tools.js"></script>
+    <script src="src/js/app/common/common.js"></script>
+
+    <!-- account module -->
+    <script src="src/js/app/account/businessProfile/businessProfile.js"></script>
+    <script src="src/js/app/account/accountProfile/accountProfile.js"></script>
+    <script src="src/js/app/account/businessDetails/businessDetails.js"></script>
+    <script src="src/js/app/account/taxList/taxList.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/tabs.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/tabsService.js"></script>
+    <script src="src/js/app/account/businessDetails/tab.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/serviceDetails/serviceDetails.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/mainProducts.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/productGallery.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/product/product.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/addProduct.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productProfile/productProfile.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productDetails/productDetails.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productImages/productImages.js"></script>
+
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productImages/tabs/images/images.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productImages/tabs/cropper/cropper.js"></script>
+
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productSalesDetail/productSalesDetail.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/writeProductInstance.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productVariations/productVariations.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/mainProducts/productGallery/addProduct/productVariations/ProductVariationsController.js"></script>
+    <script src="src/js/app/account/businessDetails/tabs/otherProducts/otherProducts.js"></script>
+    <script src="src/js/app/account/account.js"></script>
+
+    <!-- models module -->
+    <script src="src/js/app/models/account/profile/profile.js"></script>
+    <script src="src/js/app/models/account/account.js"></script>
+    <script src="src/js/app/models/business/products/products.js"></script>
+    <script src="src/js/app/models/business/profile/profile.js"></script>
+    <script src="src/js/app/models/business/business.js"></script>
+    <script src="src/js/app/models/models.js"></script>
+
+
+
+
+    <!-- dataTransformers -->
+    <script src="src/js/app/dataTransformers/requestTransformer/requestTransformer.js"></script>
+    <script src="src/js/app/dataTransformers/responseTransformer/responseTransformer.js"></script>
+    <script src="src/js/app/dataTransformers/dataTransformers.js"></script>
+
+
+    <!-- main app module -->
+    <script src="src/js/app/app.js"></script>
+</body>
+</html>

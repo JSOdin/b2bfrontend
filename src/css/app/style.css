@@ -1,0 +1,468 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+
+/* general */
+body {
+    font-family: Roboto, arial, verdana;
+    font-weight:100;
+}
+
+input, select{
+    border-radius:1px !important;
+    margin-right: 5px !important;
+}
+
+form label:not(.checkbox-label) {
+    font-size: 0.8em; font-weight: 100;
+}
+
+/* prevent blue higlighting of button when selected */
+button:focus {
+    outline:0 !important;
+}
+
+button {
+    border-radius: 1px !important;
+}
+
+/*!* animation on state change *!
+[ui-view].ng-enter{
+    -webkit-transition: linear 0.5s;
+    -moz-transition: linear 0.5s;
+    -ms-transition: linear 0.5s;
+    -o-transition: linear 0.5s;
+    transition: linear 0.5s;
+}
+
+[ui-view].ng-enter {  !** as DOM element appears set opacity to 0**!
+    opacity: 0;
+}
+
+[ui-view].ng-enter-active { !** as DOM element actively enters **!
+    opacity: 1;
+}
+
+[ui-view].ng-leave { !** when element leaves/destroyed from DOM **!
+    opacity: 1;
+}
+
+[ui-view].ng-leave-active { !** while its leaving or destroyed **!
+    opacity: 0;
+}*/
+
+/*** sign in page ***/
+.sign-in-wrapper{
+    padding-top: 200px;
+}
+
+.error-message-text{
+    margin-top: 15px;
+    margin-bottom:0;
+    background-color:#FD742E;
+    font-size: 0.9em;
+    padding:15px;
+    color: white;
+    border-radius:1px;
+}
+
+/* error box fade in/fade out animation */
+/* ng-show uses ng-hide-add and ng-hide-remove classes while transitioning */
+
+/*.error-message {
+    opacity:1;
+}
+
+.error-message.ng-hide-remove, .error-message.ng-hide-add {                       !* this is required as of 1.3x to properly apply all styling in a show/hide animation *!
+    transition:0.2s linear all;
+}
+
+.error-message.ng-hide {
+    opacity:0;
+}*/
+
+.form-group.join-free-link {
+    margin-bottom: 0;
+}
+
+/*** registration page ***/
+.form-wrapper{
+    padding-top: 10px;
+    padding-bottom: 200px;
+}
+
+/* form */
+.form, .input-group-addon  {
+    border-radius: 1px;
+    box-sizing: border-box;
+}
+
+.standalone-form {
+    padding: 20px 30px;
+
+    border: solid 1px #ddd;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.standalone-form, .member-pick-type {
+    padding: 0 30px 20px 30px;
+    position: relative;
+}
+
+.form input, .form textarea, .form select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    font-weight: 100;
+    font-family: Roboto;
+    color: #2C3E50;
+    cursor: pointer;
+}
+
+.form input, .form textarea, .form select, .form .input-group {
+    margin-bottom: 10px;
+}
+
+.form .action-button, .member-type-box {
+
+    font-weight: 400;
+    border: 0 none;
+    border-radius:0;
+
+}
+
+.form .action-button {
+    color: white;
+    background: #27AE60;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.registration-form .highlighter:hover, .registration-form .highlighter:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+.form label {
+    font-weight: lighter;
+}
+
+.form  .checkbox-label {
+    padding-top:6px;
+}
+
+.checkbox {
+    padding-top: 0 !important;
+    margin:0 !important;
+}
+
+.registration-title{
+    font-size: 15px;
+    text-transform: uppercase;
+    color: #2C3E50;
+    margin-bottom: 10px;
+}
+
+.form .form-group {
+    margin-bottom: 0;
+}
+
+.registration-form p, .validation-error p{
+    color:#FD742E;
+}
+
+.registration-form p, .validation-error p, .validation-success p {
+    font-size: 0.9em;
+}
+
+.validation-success p{
+    color: green;
+}
+
+
+
+#progressbar {
+    margin-bottom: 30px;
+    overflow:hidden;
+    counter-reset: step;
+    padding-left: 0;
+}
+
+#progressbar li{
+    list-style-type: none;
+    text-transform: uppercase;
+    font-size: 9px;
+    width: 50%;
+    float:left;
+    position: relative;
+}
+
+#progressbar li:before {
+    content: counter(step);
+    counter-increment:step;
+    width: 20px;
+    line-height: 20px;
+    display: block;
+    font-size: 10px;
+    color: white;
+    background:silver;
+    border-radius: 3px;
+    margin: 0 auto 5px auto;
+}
+
+#progressbar li:after {
+    content:'';
+    width: 100%;
+    height: 2px;
+    background: silver;
+    position: absolute;
+    left: -50%;      /* pseudo element is same length of li so -50% left makes sense */
+    top: 9px;        /* 9px from the top edge of li. */
+    z-index: -1;     /*put it behind the numbers*/
+}
+
+#progressbar li:first-child:after {
+    /*connector not needed before the first step*/
+    content: none;
+}
+
+#progressbar li.active:before,  #progressbar li.active:after{
+    background: #27AE60;
+    color: white;
+}
+
+/* slider */
+
+.slide-element{
+    background: #e6e6e6;
+    width: 100%;
+    height:33px;
+    line-height: 33px;
+    margin:2px 0 0 0;
+    position: relative;
+    z-index: 50;
+}
+
+.slider-parts {
+    position: absolute;
+}
+
+.slider-btn{
+    border: 1px solid silver;
+    background: white;
+    height:100%;
+    left:0;
+    top: 0;
+    z-index: 100;
+    font-weight: lighter;
+    font-size: 0.5em;
+    width: 50px;
+
+    display: flex;
+    justify-content: center; /* align horizontal */
+    align-items: center; /* align vertical */
+}
+
+.slider-color-section{
+    background: rgba(43, 107, 160,0.7);
+    height:100%;
+    left:0;
+    top: 0;
+    z-index: 20;
+}
+
+.slider-info{
+    display:block;
+    width: 100%;
+    z-index: 75;
+    font-size: 11px;
+    color: #333333;
+}
+
+/* center the dash in form-group div */
+.telephone-dash {
+    -webkit-transform:translateY(30%);
+    -ms-transform:translateY(30%);
+    transform: translateY(30%);
+}
+
+/* disabled button */
+.registration-form .action-button.disabled {
+    background-color: #e0e0e0;
+    color: #BBBBBB;
+}
+
+/* navbar (both navless and nav-with */
+.navless-nav {
+    height: 95px;
+}
+
+.navless-nav .brand-container {
+    padding-top: 20px;
+}
+
+.brand-container h4{
+    margin-bottom:0;
+}
+
+.navless-nav .brand-container p, .nav-withnav .brand-container p{
+    font-size: 0.7em;
+    color: rgba(50,50,50,0.7);
+}
+
+/* pick member type page */
+
+.member-type-box {
+    border-radius: 0;
+}
+
+.member-type-wrapper {
+
+    border: solid 1px #ddd;
+    box-shadow: 0 0 10px #ddd;
+}
+
+
+/** profile page **/
+
+/* profile general */
+
+
+/* profile menu */
+
+.box-shadow {
+    border: solid 1px #ddd;
+    box-shadow: 0 0 10px #ddd;
+}
+
+.box-border {
+    border: solid 1px #ddd !important;
+}
+
+.half-border {
+    border-left: solid 1px #ddd !important;
+    border-right: solid 1px #ddd !important;
+    border-bottom: solid 1px #ddd !important;
+}
+
+
+.list-group.profile-menu {
+    border-radius:0;
+    background-color: rgb(44, 62, 80);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.profile-menu > button.list-group-item {
+    border-radius: 0 !important;
+    border:none;
+    border-left: 5px solid rgb(44, 62, 80);
+    background-color: rgb(44, 62, 80);
+    font-size: 0.8em;
+    margin:0;
+    color: #DDDDDD;
+}
+
+.profile-menu > button.list-group-item:hover, .profile-menu > button.profile-active{
+    color: rgba(44, 62, 80,0.8);
+}
+
+.profile-menu > button.profile-active {
+    border-left: 5px solid #27AE60; !important;
+    background-color: #f1f1f1;
+}
+
+.profile-menu > button.list-group-item:hover {
+    border-left: 5px solid #9DE8BE; !important;
+    background-color: #fcfcfc;
+}
+
+.profile-content-area{
+    margin-left: 10px;
+    background-color: white;
+}
+
+/* service details tab */
+
+.nav-tabs a {
+    font-size: 0.8em;
+    border-top-style:none !Important;
+    border-radius:0 !important;
+}
+
+.nav-tabs li.active.activeBorder > a{
+    border-left: none;
+}
+
+.nav-tabs li > a {
+    margin:0;
+}
+
+.tabs-row, .modal-content .tabs-row {
+    background-color: rgba(236, 238, 242,0.5);
+    border-top: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+}
+
+.service-details-content {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+
+
+/* add product modal popup */
+.modal-content {
+    border-radius:0;
+    box-shadow: 0px 5px 15px rgba(66,66,66, 0.5);
+}
+
+
+/* product images page */
+.drop-zone {
+
+}
+
+
+/* product variations page */
+.table-custom th {
+
+}
+
+.table-custom {
+    font-size: 0.8em;
+}
+
+.table-custom .btn {
+    font-size: 0.8em;
+}
+
+/* autocomplete custom template */
+
+.custom-popup-wrapper {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    background-color: #f9f9f9;
+    border:1px solid #ddd;
+    border-top: none;
+}
+
+.custom-popup-wrapper > .message {
+    padding: 10px 20px;
+    border-bottom: 1px solid #ddd;
+    color: #868686;
+}
+
+.custom-popup-wrapper > .dropdown-menu {
+    position: static;
+    float: none;
+    display: block;
+    min-width: 160px;
+    background-color: transparent;
+    border:none;
+    border-radius: 0;
+    box-shadow: none;
+
+}
+

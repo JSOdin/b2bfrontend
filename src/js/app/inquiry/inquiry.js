@@ -1,0 +1,9 @@
+(function(window,angular){
+    angular.module('inquiry',['inquiry.compare'])
+        .config(['$stateProvider','$urlRouterProvider',function($stateProvider,$urlRouterProvider){
+            $stateProvider.state('inquiry',{
+                url:'',
+                abstract:true
+            });       
+        }]);
+})(window,window.angular);

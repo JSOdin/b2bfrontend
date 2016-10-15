@@ -1,0 +1,33 @@
+<nav class="navbar navbar-default nav-withnav">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 col-xs-offset-1 brand-container">
+                <h4>PyraBlox</h4><p>Wholsale Trading Solutions</p>
+            </div>
+            <div class="col-xs-2" ng-show="!navCtrl.isLoggedIn">
+                <button type="button" class="btn btn-default navbar-btn form-control" ui-sref="authentication.login">Sign in</button>
+            </div>
+            <div class="col-xs-2" ng-show="navCtrl.isLoggedIn">
+                <button type="button" class="btn btn-default navbar-btn form-control" ui-sref="inquiry.compare">Inquiry</button>
+            </div>
+            <div class="col-xs-2" ng-show="navCtrl.isLoggedIn">
+                <button type="button" class="btn btn-default navbar-btn form-control" ui-sref="home.account.businessProfile">Account</button>
+            </div>
+            <div class="col-xs-2" ng-show="navCtrl.isLoggedIn">
+                <button type="button" class="btn btn-default navbar-btn form-control" ng-click="navCtrl.logout()">Log out</button>
+            </div>
+        </div>
+        <!--    &lt;!&ndash; Brand and toggle get grouped for better mobile display &ndash;&gt;
+            <div class="navbar-header" style="padding-left: 105px; padding-top: 20px;">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="">PyraBlox</a>
+            </div>-->
+
+
+    </div><!-- /.container-fluid -->
+</nav>

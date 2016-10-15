@@ -1,0 +1,137 @@
+/**** BUSINESS ****/
+
+// registrant/account
+representative: b
+department: c
+mobile_phone: i
+password: i
+
+// profile
+office_phone: i
+industry: c
+business_category: c
+business_name: i
+phone_one: i
+phone_two: i
+fax: i
+homepage: i
+contact_person: i
+contact_email: i
+contact_mobile: i
+
+// detail
+main_products: I - multiple
+other_products: I - multiple
+service_range: c
+service_area: c
+default_currency: c
+local_currency: c
+intro: i
+
+// taxlist
+tax_code i
+tax_type i
+tax_rate i
+
+// businessaddress
+address_type: c
+street: i
+city: i/c
+district: i/c
+province: i/c
+zip_code: i
+country: c
+
+// businessCertificates
+title: i
+issued_by: i
+certificate_image: i
+valid_until: i
+
+// business_logo
+logo_image: i
+
+//businessPictures
+business_picture i
+
+//employee_authority
+user: i
+authority: c
+
+
+
+
+
+password - i
+ 
+country - s
+business_name - i
+first_name - i
+last_name - i
+
+representative - c
+office_phone - i
+
+
+
+
+
+
+/**** PRODUCT REGISTRATION ****/
+
+/////////////////////
+// product profile
+
+[product_id] PK
+
+industry: c
+* category: c
+* sub_category: c
+* code: i
+* name: i
+* active: cb
+
+// product detail
+
+[product_id] FK
+
+* brand: i
+* origin: i
+organic: cb
+storage: c
+shelf_life: c
+* ingredient: i   - textarea
+* allergy_alert: i - textarea
+* description: i - textarea
+draft: cb
+
+
+// product Images
+
+[product_id] FK
+image: i
+
+// product variation
+
+[product_id] FK
+[product_variation_id] PK
+property: i
+value: i
+active: cb
+
+// product sales detail
+
+[product_variation_id] FK
+packing: i
+selling_unit: i
+currency: i
+* regular_price: i
+tax_incursion_price: cb
+open_price: cb
+tax_exempt: cb
+active: cb
+
+////////////////////
+
+
+

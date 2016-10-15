@@ -1,0 +1,91 @@
+<div class="container-fluid">
+    <div class="row" style="padding-top: 15px;">
+        <form class="col-xs-34 col-xs-offset-1 form" autocomplete="off">
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label>brand</label>
+                        <input type="text" class="form-control" placeholder="e.g. Shirakiku" ng-model="product.brand">
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label>Origin</label>
+                        <!-- make this a dropdown -->
+                        <select class="form-control" style="display:block;" ng-model="product.origin" ng-options="origin as origin.display for origin in options.origins track by origin.id">
+
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-17">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Storage</label>
+                        <select class="form-control" style="display:block;" ng-model="product.storage" ng-options="storage as storage.display for storage in options.storages track by storage.value">
+
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-18 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Shelf life</label>
+                        <select class="form-control" style="display:block;" ng-model="product.shelf_life" ng-options="shelf_life as shelf_life.display for shelf_life in options.shelf_lifes track by shelf_life.value">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" placeholder="Cocoa Powder" ng-model="product.description" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="form-group">
+                        <label>Ingredients</label>
+                        <textarea class="form-control" ng-model="product.ingredient" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="form-group">
+                        <label>Allergy Alert</label>
+                        <textarea class="form-control" ng-model="product.allergy_alert" rows="4"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="product.organic"/> Organic
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="product.draft"/> Draft
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-36">
+                    <div class="checkbox">
+                        <label class="checkbox-label" >
+                            <input type="checkbox" ng-model="product.active"/> Active
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

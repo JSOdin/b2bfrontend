@@ -1,0 +1,43 @@
+<div class="row half-border main-products">
+    <div class="row" style="padding:10px 5px 10px 15px;">
+        <div class="col-xs-3">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-th"></span></button>
+                <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-th-list"></span></button>
+            </div>
+        </div>
+        <div class="col-xs-33">
+            <form class="form-inline">
+                <div class="form-group">
+                    <select class="form-control" >
+                        <option>
+                            Item Number
+                        </option>
+                        <option>
+                            Item Name
+                        </option>
+                        <option>
+                            Item Description
+                        </option>
+                        <option>
+                            Brand
+                        </option>
+                    </select>
+                    <select class="form-control">
+                        <option>
+                            Starts With
+                        </option>
+                        <option>
+                            Contains
+                        </option>
+                    </select>
+                    <input class="form-control" type="text"/>
+                </div>
+            </form>
+        </div>
+    </div>
+    <product-gallery>
+        <add-product></add-product>
+        <product ng-repeat="product in products track by $index" product="product"></product>
+    </product-gallery>
+</div>

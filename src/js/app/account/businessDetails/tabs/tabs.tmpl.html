@@ -1,0 +1,9 @@
+<div class="row tabs-row">
+    <div class="col-xs-36">
+        <ul class="nav nav-tabs">
+            <li role="presentation" ng-class="{'active':tab.selected, 'activeBorder':$index == 0}" ng-repeat="tab in tabsCtrl.tabs" ng-click="tabsCtrl.selectTab(tab)"><a href="">{{tab.name}}</a></li>
+        </ul>
+    </div>
+</div>
+<div ng-transclude class="row profile-pages">
+</div>

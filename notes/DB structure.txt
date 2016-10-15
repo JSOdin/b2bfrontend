@@ -1,0 +1,330 @@
+
+DB list
+    Application     table (DB)          Fields          type            max length      remarks / comments
+    =======================================================================================================
+    Base
+                    UserAuth
+                                        email           EmailField      125
+                                        password        (* password)
+                                        first_name      CharField       60
+                                        last_name       CharField       60
+                                        is_active       BooleanField        default=false
+                                                        * default field in django and it can be changed by coding
+                    UserActivation
+                                        user            OneToOneField       settings.AUTH_USER_MODEL
+                                        activation_key  CharField       240
+                                        activated       BooleanField        default=false
+                                        key_expires     DateTimeField       default=timezone.now()+timedelta(5)
+
+    Cities                                      * coding is not required. these are provided from django-cities
+                    AlternativeNames
+                    cities
+                    Districts
+                    Subregions
+                    Regions
+                    Countries
+                    PostalCodes
+
+    Business
+                    BusinessRegistrant
+                                        user            OneToOneField       authorized user(settings.AUTH_USER_MODEL)
+                                        representative  BooleanField        default=False
+                                        department      CharField       24  choices=DEPARTMENT
+                                        mobile_phone    CharField       24
+                                        office_phone    CharField       24
+                                        register_ip     CharField       48  user's request.META.get('REMOTE_ADDR', None)
+                    BusinessProfile
+                                        user            OneToOneField       authorized user(settings.AUTH_USER_MODEL)
+                                        industry        CharField       24  choices=INDUSTRY
+                                        business_category CharField     24  choices=BUSINESS_CATEGORY
+                                        business_name   CharField       120
+                                        name_slug       SlugField		148
+                                        phone_one       CharField       24
+                                        phone_two       CharField       24
+                                        fax             CharField       24
+                                        homepage        URLField        60
+                                        contact_person  CharField       60
+                                        contact_email   EmailField		254
+                                        contact_mobile  CharField       24
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                    BusinessDetail
+                                        business        OneToOneField       (BusinessProfile)
+                                        main_products_slug  SlugField   300     # slugify (most 5 items together)
+                                                        * 5 input field in HTML --> make slug
+                                        other_products_slug SlugField   300     # slugify (most 5 items together)
+                                                        * 5 input field in HTML --> make slug
+                                        service_range   CharField       30
+                                                        # (city, district, province, country)
+                                        service_area    CharField       60
+                                        default_currency    CharField   36
+                                        local_currency  CharField       36  selectable from country DB of django-cities
+                                        introduction    TextField       4000    * editor support required
+                    TaxList
+                                        business        ForeignKey          (BusinessProfile)
+                                        tax_code        CharField       12
+                    TaxDetail
+                                        tax_code        ForeignKey          (TaxList)
+                                        tax_type        CharField       60
+                                        tax_rate        DecimalField        (max_digits=12, decimal_places=2)
+                    BusinessAddress
+                                        business        ForeignKey          (BusinessProfile)
+                                        address_type    CharField       24  (choices=ADDRESS_TYPE)
+                                        street          CharField       120
+                                        city            CharField       60  (select from django-cities)
+                                        district        CharField       60  (select from django-cities)
+                                        province        CharField       60  (select from django-cities)
+                                        zip_code        CharField       12
+                                        country         CharField       60  (select from django-cities)
+                                        location_point  PointField          (auto add when city is input)
+                    BusinessCertificates
+                                        business        ForeignKey          (BusinessProfile)
+                                        title           CharField       120
+                                        issued_by       CharField       120
+                                        certificate_image   ImageField      (size adjust ?)
+                                        valid_until     DateField
+                    BusinessLogo
+                                        business        ForeignKey          (BusinessProfile)
+                                        logo_image      ImageField          (size adjust ?)
+                    BusinessPictures
+                                        business        ForeignKey          (BusinessProfile)
+                                        business_picture    ImageField      (size adjust ?)
+                    EmployeeAuthority
+                                        business        ForeignKey          (BusinessProfile, related_name="business")
+                                        user            ForeignKey          (settings.AUTH_USER_MODEL, related_name="employee")
+                                        authority       CharField           (choices=EMPLOYEE_AHTHORITY)
+                                                                EMPLOYEE_AUTHORITY = {"query": "Search & Query",
+                                                                                      "edit": "Edit & Update"  }
+                                        active          BooleanField        (default=True)
+
+    Product
+                    ProductProfile
+                                        business        ForeignKey          (BusinessProfile)
+                                        industry        CharField       24  (choices=INDUSTRY)
+                                        category        ForeignKey          (ProductCategory)
+                                        sub_category    ForeignKey          (ProductSubCategory)
+                                        code            CharField       36
+                                        name            CharField       120
+                                        product_slug    SlugField       240 # code-product_name-business_name
+					active		BooleanField	    default=True
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                    ProductDetail
+                                        product         ForeignKey          (ProductProfile)
+                                        brand           CharField       120
+                                        origin          CharField       120
+                                        organic         BooleanField        default=False
+                                        storage         CharField       24  (choices=STORAGE)
+                                        shelf_life      CharField       24  (choices=SHELF_LIFE)
+                                        ingredient      TextField       1200    * editor support required
+                                        allergy_alert   TextField       600     * editor support required
+                                        description     TextField       4000    * editor support required
+                                        draft           BooleanField        default=False
+                    ProductImage
+                                        product         ForeignKey          (ProductProfile)
+                                        image           ImageField
+                    ProductVariation
+                                        product         ForeignKey          (ProductProfile)
+                                        property        CharField       36
+                                        value           CharField       60
+                                        active          BooleanField        default=True
+                    ProductSalesDetail
+                                        product         ForeignKey          (ProductProfile)
+                                        variation_tag   TextField       120 default="DEFAULT"
+                                        packing         CharField       120
+                                        selling_unit    CharField       12  (choices=SELLING_UNIT)
+                                        currency        CharField       12  default="USD"
+                                        regular_price   DecimalField    24  decimal_places=2, default=0.99
+                                        tax_inclusive_price     BooleanField        default=False
+                                        open_price              BooleanField        default=False
+                                                                # whether the price is open to public or hidden
+                                        sales_tax_code  ForeignKey          (TaxList, default='')
+                                        tax_exempt      BooleanField        default=True
+                                        active          BooleanField        default=True
+
+    Purchase
+                    PurchaseInquiryCart
+                                        buyer           ForeignKey          (BusinessProfile, related_name="buyer")
+                                        seller          ForeignKey          (BusinessProfile, related_name="seller")
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                                        completed       BooleanField        default=False
+                    PurchaseInquiryCartDetail
+                                        inquiry_cart    ForeignKey          (PurchaseInquiryCart)
+                                        product         ForeignKey          (ProductProfile, related_name="product")
+                                        quantity
+                                        selling_unit
+                    PurchaseInquiry
+                                        buyer           ForeignKey          (BusinessProfile, related_name="buyer")
+                                        seller          ForeignKey          (BusinessProfile, related_name="seller")
+                                        request_shipping_method     BooleanField        default=False
+                                        request_freight             BooleanField        default=False
+                                        request_payment_due         BooleanField        default=False
+                                        request_early_pay_dc_rate   BooleanField        default=False
+                                        request_volume_dc_rate      BooleanField        default=False
+                                        request_payment             BooleanField        default=False
+                                        expecting_date              DateField
+                                        inquiry_message             TextField       600
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                                        remitted        BooleanField        default=False
+                    PurchaseInquiryDetail
+                                        inquiry_cart    ForeignKey          (PurchaseInquiryCart)
+                                        product         ForeignKey          (ProductProfile, related_name="product")
+                                        quantity        DecimalField        (max_digits=12, decimal_places=2)
+                                        selling_unit    CharField           (choices=SELLING_UNIT)
+
+                    RecurringPurchase
+                                        buyer           ForeignKey          (BusinessProfile, related_name="buyer")
+                                        order           ForeignKey          (Order)
+                                        selected        BooleanField        default=False       * not for DB / just for HTML
+                                        frequency       CharField           (choices=TRANSACTION_FREQ)
+                                        next_due        DateField
+                                        active          BooleanField        default=True
+
+                    OrderStatus
+                                        buyer           ForeignKey          (BusinessProfile, related_name="buyer")
+                                        order           ForeignKey          (Order, related_name="order")
+                                        order_status    CharField           (choices=PURCHASE_ORDER_STATUS)
+
+                            PURCHASE_ORDER_STATUS = {'quote': Quotation,
+                                                    'cart': Purchase Cart,
+                                                    'order': Confirmed Purchase Order,
+                                                    'completed': Completed Purchase Order,
+                                                    'cancelled': Cancelled}
+
+                            SALES_ORDER_STATUS = {'quote': Sales Quotation,
+                                                  'order': Confirmed Sales Order,
+                                                  'completed': Completed Sales Order,
+                                                  'cancelled': Cancelled}
+
+    Sales
+                    Order
+                                        order_status        CharField       12    (choice=SALES_ORDER_STATUS)
+                                        seller              ForeignKey          (BusinessProfile, related_name="seller")
+                                        buyer               ForeignKey          (BusinessProfile, related_name="buyer")
+                                        sub_total_amount    DecimalField        (max_digits=12, decimal_places=2)
+                                        freight             DecimalField        (max_digits=12, decimal_places=2)
+                                        freight_tax_code    CharField       24
+                                        freight_tax_amount  DecimalField        (max_digits=12, decimal_places=2)
+                                        total_tax           DecimalField        (max_digits=12, decimal_places=2)
+                                        total_quote_amount  DecimalField        (max_digits=12, decimal_places=2)
+                                        shipping_method     CharField       36  (choices=SHIPPING_METHOD)
+                                        freight             DecimalField        (max_digits=12, decimal_places=2)
+                                        payment_due         CharField       36  (choices=PAYMENT_DUE)
+                                        early_pay_dc        CharField       240
+                                        volume_dc           CharField       240
+                                        payment             CharField       36  (choice=SALES_PAYMENT_METHOD)
+                                        promised_date       DateField
+                                        quote_message       CharField
+                                        uploaded_at         DateTimeField       auto add
+                                        updated_at          DateTimeField       auto update
+                                        remitted            BooleanField        default=False
+
+                    OrderDetail
+                                        order               ForeignKey          (Order, related_name="order")
+                                        product             ForeignKey          (ProductProfile, related_name="product")
+                                        price               DecimalField        (max_digits=12, decimal_places=2)
+                                        quantity            DecimalField        (max_digits=12, decimal_places=2)
+                                        discount_pct        DecimalField        (max_digits=12, decimal_places=2)
+                                        product_net_amount  DecimalField        (max_digits=12, decimal_places=2)
+                                        sales_tax_code      CharField       12  (choices=TAX_CODE)
+                                        sales_tax_rate      DecimalField        (max_digits=12, decimal_places=2)
+                                        sales_tax_amount    DecimalField        (max_digits=12, decimal_places=2)
+                                        item_total_amount   DecimalField        (max_digits=12, decimal_places=2)
+
+                    RecurringSales
+                                        seller          ForeignKey          (BusinessProfile, related_name="buyer")
+                                        order           ForeignKey          (SalesOrder)
+                                        selected        BooleanField        default=False       * not for DB / just for HTML
+                                        frequency       CharField           (choices=TRANSACTION_FREQ)
+                                        next_due        DateField
+                                        active          BooleanField        default=True
+
+    Restaurant_menus
+                    RestaurantDetail
+                                        business        OneToOneField       (BusinessProfile)
+                                        cuisine         CharField       24  (choices=CUISINE_CATEGORY)
+                                        main_menus_slug SlugField           # slugify (5 main items together)
+                                        other_menus_slug    SlugField       # slugify (5 main items together)
+                                        default_currency    CharField   36  default="USD"
+                                        introduction    TextField       4000        * editor support required
+                                        draft           BooleanField        default=True
+                                                                            # draft / open to public
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                    RestaurantMenu
+                                        business        ForeignKey          (BusinessProfile)
+                                        title           CharField       120
+                                        cuisine         CharField       24  (choices=CUISINE_CATEGORY)
+                                        description     CharField       4000        * editor support required
+                                        regular_price   DecimalField        (max_digits=24, decimal_places=2, default=0.99)
+                                        special_price   DecimalField        (max_digits=24, decimal_places=2, default=0.99)
+                                        draft           BooleanField        default=True
+                                                                            # draft / open to public
+                                        uploaded_at     DateTimeField       auto add
+                                        updated_at      DateTimeField       auto update
+                    MenuPicture
+                                        menu            ForeignKey          (RestaurantMenu)
+                                        picture         ImageField()
+                    MyBookmarkRestaurant
+                                        user            ForeignKey          (settings.AUTH_USER_MODEL)
+                                        bookmark_restaurant     ForeignKey  (BusinessProfile)
+
+                    MyBookmarkMenu
+                                        user            ForeignKey          (settings.AUTH_USER_MODEL)
+                                        bookmark_menu   ForeignKey          (RestaurantMenu)
+
+
+    Membership
+                                        MEMBER_CLASS = {'free': 'Free Member',
+                                                        'standard': 'Standard Member',
+                                                        'premium': 'Premium Member',
+                                                        'sponsor': 'Exclusive Member'}
+
+                                        MEMBER_PAYMENT_METHOD = {'paypal': 'PayPal',
+                                                        'visa': 'Visa Card',
+                                                        'master': 'Master Card'}
+
+                                        PAYMENT_PERIOD = {'yearly': 'Yearly ',
+                                                          'monthly': 'Monthly',
+                                                          'advertise': 'Advertiser'}
+
+                    Member              business        ForeignKey          (BusinessProfile)
+                                        member_class    CharField       24  (choices=MEMBER_CLASS)
+                                        paid_amount     DecimalField        (max_digits=24, decimal_places=2, default=0.99)
+                                        payment_period  CharField       24  (choices=PAYMENT_PERIOD)
+                                        from_date       DateField
+                                        to_date         DateField
+                                        auto_renew      BooleanField        (default=True)
+                                        active          BooleanField
+
+                    Payment             member          ForeignKey          (Member)
+                                        amount          DecimalField        (max_digits=24, decimal_places=2, default=0.99)
+                                        member_payment_method   CharField   24  (choices=MEMBER_PAYMENT_METHOD)
+                                        card_number         CharField   36
+                                        card_expiry_date    DateField
+                                        card_holder_name    CharField   60
+                                        verification_code   CharField   12
+                                        bill_street         CharField   120
+                                        bill_city           CharField   60  (select from django-cities)
+                                        bill_province       CharField   60  (select from django-cities)
+                                        bill_zip_code       CharField   24
+                                        bill_country        CharField   60  (select from django-cities)
+                                        location_point      PointField          (auto add when city is input)
+
+                                        confirmation_no     CharField   60
+                                        processed_at        DateTimeField
+
+    Trading_admin                           * not user interface / for site administration
+                    ProductCategory
+                                        idx             CharField       10
+                                        category        CharField       60
+                    ProductSubcategory
+                                        category        ForeignKey          (ProductCategory)
+                                        sub_category    CharField       120
+                    ProductCommonName
+                                        category        ForeignKey          (ProductCategory)
+                                        sub_category    ForeignKey          (ProductSubCategory)
+                                        common_name     CharField       120
+

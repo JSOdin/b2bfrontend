@@ -1,0 +1,95 @@
+<div class="container-fluid box-border">
+    <div class="row" style="background-color: rgba(236, 238, 242,0.5); padding-top: 15px;">
+        <div class="col-xs-25 col-xs-offset-1">
+            <h6 style=""><span class="glyphicon glyphicon-user"></span> {{businessProfileCtrl.business.business_registrant.business_name}}</h6>
+        </div>
+    </div>
+    <div class="row" style="padding-top: 15px; padding-bottom: 15px;">
+        <form class="col-xs-34 col-xs-offset-1 form" autocomplete="off">
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Phone #1</label>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.phone_one" placeholder="6044201639" >
+                    </div>
+                </div>
+                <div class="col-xs-16 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Phone #2</label>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.phone_two" placeholder="Phone number 2" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Fax</label>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.fax" placeholder="Fax number" >
+                    </div>
+                </div>
+                <div class="col-xs-16 col-xs-offset-1">
+                    <label style="font-size: 0.8em; font-weight: 100;">Website</label>
+                    <div class="input-group">
+                        <span class="input-group-addon" id="basic-addon1">http://</span>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.homepage" placeholder="example.com" aria-describedby="basic-addon1">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Office Phone</label>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.business_registrant.phone" placeholder="Main Phone" >
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-16">
+                    <label style="font-size: 0.8em; font-weight: 100;">Registered Business Name</label> <!-- checks if a new business certificate was submitted -->
+                    <div class="input-group">
+                          <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Change</button>
+                          </span>
+                        <input type="text" class="form-control" ng-model="businessProfileCtrl.business.business_registrant.business_name" placeholder="Wang Meat Producers Ltd." disabled>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Industry</label>
+                        <select class="form-control" ng-model="businessProfileCtrl.business.industry"  ng-options="industry as industry.display for industry in businessProfileCtrl.industryOptions track by industry.id">
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-8 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Business Category</label>
+                        <select class="form-control" style="display:block; ng-model=" ng-model="businessProfileCtrl.business.business_category"  ng-options="category as category.display for category in businessProfileCtrl.businessCategoriesOptions track by category.id">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Contact Person</label>
+                        <input type="email" class="form-control" ng-model="businessProfileCtrl.business.contact_person" placeholder="John Wayne">
+                    </div>
+                </div>
+                <div class="col-xs-16 col-xs-offset-1">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Contact Email</label>
+                        <input type="email" class="form-control" ng-model="businessProfileCtrl.business.contact_email" placeholder="jungleman@gmail.com">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-16">
+                    <div class="form-group">
+                        <label style="font-size: 0.8em; font-weight: 100;">Contact Mobile Phone</label>
+                        <input type="text" class="form-control" placeholder="" ng-model="businessProfileCtrl.business.contact_mobile">
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,41 @@
+<!-- shared between adding and editing products -->
+
+<div class="container-fluid modal-container">
+
+    <tabs use-service="true" module-name="product">
+        <tab name="Product Profile">
+            <product-profile product="WPICtrl.product" validation="WPICtrl.validationMessage"></product-profile>
+        </tab>
+        <tab name="Details">
+            <product-details product="WPICtrl.product"></product-details>
+        </tab>
+        <tab name="Images">
+            <product-images product="WPICtrl.product"></product-images>
+        </tab>
+        <tab name="Variation" >
+            <product-variations product="WPICtrl.product"></product-variations>
+        </tab>
+        <tab name="Sales Detail">
+            <product-sales-detail product="WPICtrl.product"></product-sales-detail>
+        </tab>
+    </tabs>
+
+    <div class="row" style="padding-bottom: 15px;">
+        <div class="col-xs-35 col-xs-offset-1">
+            <div class="row">
+                <div ng-class="WPICtrl.product.id ? 'col-xs-25 validation-error' : 'col-xs-20 validation-error'">
+                    <p ng-if="WPICtrl.validationMessage.duplication"> <span class="glyphicon glyphicon-remove-circle"></span> {{WPICtrl.validationMessage.duplication}}</p>
+                </div>
+                <div class="col-xs-5">
+                    <button class="btn btn-default form-control" ng-click="WPICtrl.save()">Save</button>
+                </div>
+                <div class="col-xs-5" ng-show="!WPICtrl.product.id">
+                    <button class="btn btn-default form-control" ng-click="WPICtrl.reset()">Reset</button>
+                </div>
+                <div class="col-xs-5">
+                    <button class="btn btn-default form-control" ng-click="WPICtrl.close()">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,134 @@
+{
+  "ADDRESS_TYPE" :[
+    {"id": "0", "name": "Billing Address"},
+    {"id": "1", "name": "Shipping Address"},
+    {"id": "2", "name": "Other Address"}
+  ],
+  "BUSINESS_CATEGORY":[
+    {"id": "0", "name": "Manufacturer/Producer"},
+    {"id": "1", "name": "Distributor/Wholesaler"},
+    {"id": "2", "name": "Restaurant"},
+    {"id": "3", "name": "Retail"},
+    {"id": "4", "name": "Agent/Broker"},
+    {"id": "5", "name": "Service Provider"},
+    {"id": "6", "name": "Farmer"},
+    {"id": "7", "name": "Personal"},
+    {"id": "8", "name": "Other"}
+  ],
+  "SERVICE_RANGE":[
+    {"id":"0","name":"Country"},
+    {"id":"1","name":"Province"},
+    {"id":"2","name":"District"},
+    {"id":"3","name":"City"}
+  ],
+  "CONTINENT_SELECT": [
+    {"id": "0", "name": "World"},
+    {"id": "1", "name": "North America"},
+    {"id": "2", "name": "South America"},
+    {"id": "3", "name": "Europe"},
+    {"id": "4", "name": "Oceania"},
+    {"id": "5", "name": "Asia"},
+    {"id": "6", "name": "Africa"},
+    {"id": "7", "name": "Antarctica"}
+  ],
+  "CUISINE_CATEGORY": [
+    {"id": "0", "name": "American Foods"},
+    {"id": "1", "name": "Chinese Foods"},
+    {"id": "2", "name": "Asian Foods"},
+    {"id": "3", "name": "Japanese Foods"},
+    {"id": "4", "name": "European Foods"},
+    {"id": "5", "name": "Middle Eastern Food"},
+    {"id": "6", "name": "Ethnic Foods"},
+    {"id": "7", "name": "Fusion Foods"},
+    {"id": "8", "name": "Coffee House"},
+    {"id": "9", "name": "Pub"}
+  ],
+  "DEPARTMENT": [
+    {"id": "0", "name": "Owner/Enterpreneur"},
+    {"id": "1", "name": "Director/CEO/General Manager"},
+    {"id": "2", "name": "Administrative"},
+    {"id": "3", "name": "Marketing"},
+    {"id": "4", "name": "Sales"},
+    {"id": "5", "name": "Purchasing"},
+    {"id": "6", "name": "Technical & Engineering"},
+    {"id": "7", "name": "Other"}
+  ],
+  "EMPLOYEE_AUTHORITY": [
+    {"id": "0", "name": "Search & Query"},
+    {"id": "1", "name": "Edit & Update"}
+  ],
+  "INDUSTRY": [
+    {"id": "0", "name": "Food"}
+  ],
+  "ORDER_STATUS": [
+    {"id": "0", "name": "Quotation"},
+    {"id": "1", "name": "Confirmed Order"},
+    {"id": "2", "name": "Completed Order"},
+    {"id": "3", "name": "Cancelled Order"}
+  ],
+  "PAYMENT_METHOD": [
+    {"id": "0", "name": "Cash"},
+    {"id": "1", "name": "Cheque"},
+    {"id": "2", "name": "Credit Card"},
+    {"id": "3", "name": "EFT(Electronic Funds Transfer)"},
+    {"id": "4", "name": "Escrow"},
+    {"id": "5", "name": "Other Payment method"}
+  ],
+  "PAYMENT_TERM": [
+    {"id": "0", "name": "C.O.D"},
+    {"id": "1", "name": "Prepaid"},
+    {"id": "2", "name": "Credit Term"}
+  ],
+  "SELLING_UNIT": [
+    {"id": "0", "name": "Pack"},
+    {"id": "1", "name": "Piece"},
+    {"id": "2", "name": "Bag"},
+    {"id": "3", "name": "Barrel"},
+    {"id": "4", "name": "Box"},
+    {"id": "5", "name": "Carton"},
+    {"id": "6", "name": "Case"},
+    {"id": "7", "name": "Ounce"},
+    {"id": "8", "name": "Pound"},
+    {"id": "9", "name": "Gram"},
+    {"id": "10", "name": "Kilogram"},
+    {"id": "11", "name": "Ton"},
+    {"id": "12", "name": "Milliliter"},
+    {"id": "13", "name": "Liter"},
+    {"id": "14", "name": "Gallon"},
+    {"id": "15", "name": "Quarter"}
+  ],
+  "SHELF_LIFE": [
+    {"id": "0", "name": "Less than a month"},
+    {"id": "1", "name": "One to Six months"},
+    {"id": "2", "name": "One Year"},
+    {"id": "3", "name": "One and Half Years"},
+    {"id": "4", "name": "Two Years"},
+    {"id": "5", "name": "Three Years"},
+    {"id": "6", "name": "Five Years"}
+  ],
+  "SHIPPING_METHOD": [
+    {"id": "0", "name": "Air"},
+    {"id": "1", "name": "Courier"},
+    {"id": "2", "name": "FedEx"},
+    {"id": "3", "name": "Freight"},
+    {"id": "4", "name": "International"},
+    {"id": "5", "name": "Pick Up"},
+    {"id": "6", "name": "Postal Services"},
+    {"id": "7", "name": "UPS"},
+    {"id": "8", "name": "Other Shipping method"}
+  ],
+  "STORAGE": [
+    {"id": "0", "name": "Dried"},
+    {"id": "1", "name": "Fresh"},
+    {"id": "2", "name": "Frozen"}
+  ],
+  "TRANSACTION_FREQ": [
+    {"id": "0", "name": "Daily"},
+    {"id": "1", "name": "Multiple times a week"},
+    {"id": "2", "name": "Once a week"},
+    {"id": "3", "name": "Multiple times a month"},
+    {"id": "4", "name": "Once a month"},
+    {"id": "5", "name": "Quarterly"},
+    {"id": "6", "name": "Yearly"}
+  ]
+}

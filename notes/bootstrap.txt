@@ -1,0 +1,12 @@
+-text-center can center anything within the parent
+
+    ex.  <div class="col-xs-6 col-xs-offset-15 text-center">
+                    <h4 >Food App</h4>
+                    <div class="btn-group" role="group" aria-label="...">
+                        <button type="button" class="btn btn-default">Sign in</button>
+                        <button type="button" class="btn btn-default">Inquiry</button>
+                    </div>
+                </div>
+    - centers the h4 and btn-group
+
+-ui-bootstrap components - modal, typeahead, tooltip

@@ -1,0 +1,31 @@
+<div class="row">
+    <div class="col-xs-35" style="margin-left: 12px; margin-bottom: 12px; padding-top: 15px;">
+        <div class="btn-group" role="group" aria-label="...">
+            <button type="button" class="btn btn-default" ng-click="selectAll(product.images)" ng-disabled="!(product.images || []).length">Select all</button>
+            <button type="button" class="btn btn-default" ng-click="unselectAll(product.images)" ng-disabled="!(product.images || []).length">Unselect all</button>
+            <button type="button" class="btn btn-default" ng-click="deleteSelected(product.images)" ng-disabled="!(product.images || []).length">Delete Selected</button>
+        </div>
+    </div>
+
+</div>
+<!-- https://github.com/RubaXa/Sortable/pull/662 images flicking issue when using row bootstrap class. do not use the row class when handling sortables.-->
+<!-- passing in $index to functions is incredibly buggy. -->
+<div>
+    <div class="col-xs-8" style="border:1px solid #ddd; margin-left:12px; margin-bottom: 15px; height: 160px; position: relative; box-sizing:border-box;" ng-repeat="image in product.images track by $index">
+        <div class="col-xs-4 col-xs-offset-2" style="position:absolute; top:0px; z-index:50;">
+            <input type="checkbox" class="form-control" ng-model="image.selected"/>
+        </div>
+        <img class="img-responsive center-block" ng-src="{{image.src}}" style="padding:5px 5px 15px 5px; height: 125px;"/>
+
+        <div class="col-xs-36" style="position:absolute; bottom:9px; z-index:50; padding-left: 0.5em;">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button class="btn btn-info btn-xs" ng-click="goToCrop($index, image)">Crop</button>
+                </div>
+                <div class="col-xs-22">
+                    <button class="btn btn-warning btn-xs" style="width: 100%;" ng-click="deleteOne(image, product.images)">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
